@@ -1,23 +1,28 @@
-* {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ece3e3;
-    margin: 0;
-    padding: 50px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 2em;
+    background: #f9f9f9;
+}
+form {
+    margin-bottom: 1em;
+}
+#guest-list {
+    list-style: none;
+    padding: 0;
+}
+#guest-list li {
+    background: #fff;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    border-radius: 4px;
+    display: flex;
     align-items: center;
+    gap: 1em;
 }
-.first div {
-    max-width: 600px;
-    margin: 0 auto;
-    background: rgb(41, 61, 104);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.attending span {
+    color: green;
+    font-weight: bold;
 }
-.heading{
-    background-color: aqua;
-    text-align: center;
-    margin-left: auto;
-    float: left;
+.rsvp-btn, .delete-btn {
+    margin-left: 10px;
 }
-
-

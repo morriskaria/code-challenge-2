@@ -1,28 +1,68 @@
-//I should be able to type a guest's name into the input field.
-const guestForm = document.getElementById('guestform');
-const guestNameInput = document.getElementById('guestname');
+const guestNameInput = document.getElementById('guest-name');
+const guestList = document.getElementById('guest-list');
+const guestForm = document.getElementById('guest-form');
+const clearInputBtn = document.getElementById('clear-input-btn');
+const clearListBtn = document.getElementById('clearlist-btn');
 
-//this an event listner for form submission
+guestForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const guestName = guestNameInput.value.trim();
+    if (!guestName) return;
 
-guestForm.addEventListener('submit', function(event){
-    
-    
-    event.defaultPrevented();
+    if (guestList.children.length >= 10) {
+        alert('Guest list limit reached (10 people).');
+        return;
+    }
 
+    const listItem = document.createElement('li');
 
-    //we check if the is empty 
+    // Name span
+    const nameSpan = document.createElement('span');
+    nameSpan.textContent = guestName;
 
-if(guestName) {
-    console.log('Guest added', guestName)
+    // RSVP button
+    const rsvpBtn = document.createElement('button');
+    rsvpBtn.className = 'rsvp-btn';
+    rsvpBtn.textContent = 'Not Attending';
+    rsvpBtn.dataset.attending = 'false';
+    rsvpBtn.onclick = function () {
+        if (rsvpBtn.dataset.attending === 'false') {
+            rsvpBtn.textContent = 'Attending';
+            rsvpBtn.dataset.attending = 'true';
+            listItem.classList.add('attending');
+        } else {
+            rsvpBtn.textContent = 'Not Attending';
+            rsvpBtn.dataset.attending = 'false';
+            listItem.classList.remove('attending');
+        }
+    };
 
+    // Remove button
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.textContent = 'Remove';
+    deleteBtn.onclick = function () {
+        listItem.remove();
+    };
+
+    // Assemble
+    listItem.appendChild(nameSpan);
+    listItem.appendChild(rsvpBtn);
+    listItem.appendChild(deleteBtn);
+
+    guestList.appendChild(listItem);
 
     guestNameInput.value = '';
-}
-else{
-    console.log('please enter guest name');
-}
-
-
-
-
+    guestNameInput.focus();
 });
+
+// Clear input box
+clearInputBtn.onclick = function () {
+    guestNameInput.value = '';
+    guestNameInput.focus();
+};
+
+// Clear guest list
+clearListBtn.onclick = function () {
+    guestList.innerHTML = '';
+};
