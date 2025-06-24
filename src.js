@@ -1,8 +1,6 @@
 const guestNameInput = document.getElementById('guest-name');
 const guestList = document.getElementById('guest-list');
 const guestForm = document.getElementById('guest-form');
-const clearInputBtn = document.getElementById('clear-input-btn');
-const clearListBtn = document.getElementById('clearlist-btn');
 
 guestForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -55,14 +53,3 @@ guestForm.addEventListener('submit', function (e) {
     guestNameInput.value = '';
     guestNameInput.focus();
 });
-
-// Clear input box
-clearInputBtn.onclick = function () {
-    guestNameInput.value = '';
-    guestNameInput.focus();
-};
-
-// Clear guest list
-clearListBtn.onclick = function () {
-    guestList.innerHTML = '';
-};
