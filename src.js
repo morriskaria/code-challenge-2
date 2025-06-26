@@ -14,11 +14,11 @@ guestForm.addEventListener('submit', function (e) {
 
     const listItem = document.createElement('li');
 
-    // Name span
+   
     const nameSpan = document.createElement('span');
     nameSpan.textContent = guestName;
 
-    // RSVP button
+
     const rsvpBtn = document.createElement('button');
     rsvpBtn.className = 'rsvp-btn';
     rsvpBtn.textContent = 'Not Attending';
@@ -35,7 +35,7 @@ guestForm.addEventListener('submit', function (e) {
         }
     };
 
-    // Remove button
+
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'delete-btn';
     deleteBtn.textContent = 'Remove';
@@ -43,7 +43,8 @@ guestForm.addEventListener('submit', function (e) {
         listItem.remove();
     };
 
-    // Assemble
+  
+    
     listItem.appendChild(nameSpan);
     listItem.appendChild(rsvpBtn);
     listItem.appendChild(deleteBtn);
